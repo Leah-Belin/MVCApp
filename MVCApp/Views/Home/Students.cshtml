@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MVCApp.Student>
+@using MVCApp.Utilities
+
+@{
+    ViewBag.Title = "Courses";
+    ViewBag.Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string currentSort = ViewBag.CurrentSort;
+
+    if (string.IsNullOrEmpty(currentSort))
+    {
+        currentSort = "lastName";
+    }
+
+}
+
+<h2>Students</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Student ID
+        </th>
+        <th>
+            @Html.ActionLink("First Name", "Students", Request.QueryString.ToRouteValueDictionary("sortOrder", (string)ViewBag.FirstNameSortParam))
+            @Html.SortIdentifier(currentSort, "firstName")
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Students", Request.QueryString.ToRouteValueDictionary("sortOrder", (string)ViewBag.LastNameSortParam))
+            @Html.SortIdentifier(currentSort, "lastName")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $("tr:even").css("background-color", "white");
+  $("tr:odd").css("background-color", "azure");
+});
+</script>
