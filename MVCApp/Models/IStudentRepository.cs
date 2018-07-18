@@ -4,8 +4,8 @@ namespace MVCApp.Models
 {
     public interface IStudentRepository
     {
-        IEnumerable<University> GetUniversities(string sortOrder);
-        IEnumerable<Course> GetCoursesByUniversityId(int UniversityId, string sortOrder);
-        IEnumerable<Student> GetStudentsByCourseId(int courseId, string sortOrder);
+        IEnumerable<University> GetUniversities();
+        IEnumerable<Course> GetCoursesByUniversityId(int UniversityId);
+        IEnumerable<Student> GetStudentsByCourseId(int courseId);
     }
 }

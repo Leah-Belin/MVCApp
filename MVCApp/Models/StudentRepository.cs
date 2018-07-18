@@ -7,12 +7,12 @@ namespace MVCApp.Models
     {
         private StudentDBModelDataContext _db = new StudentDBModelDataContext();
 
-        public IEnumerable<Course> GetCoursesByUniversityId(int UniversityId, string sortOrder)
+        public IEnumerable<Course> GetCoursesByUniversityId(int UniversityId)
         {
             return _db.Courses.Where(c => c.UniversityId == UniversityId);
         }
         
-        public IEnumerable<Student> GetStudentsByCourseId(int courseId, string sortOrder)
+        public IEnumerable<Student> GetStudentsByCourseId(int courseId)
         {
             return (from s in _db.Students
                     join r in _db.Registrations on s.Id equals r.StudentId
@@ -20,7 +20,7 @@ namespace MVCApp.Models
                     select s).ToList();            
         }
 
-        public IEnumerable<University> GetUniversities(string sortOrder)
+        public IEnumerable<University> GetUniversities()
         {
             return _db.Universities.ToList();            
         }

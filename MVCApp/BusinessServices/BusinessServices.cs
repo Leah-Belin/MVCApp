@@ -1,7 +1,6 @@
 ﻿using MVCApp.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace MVCApp.Business
 {
@@ -15,7 +14,7 @@ namespace MVCApp.Business
         }
         public IEnumerable<Course> GetCoursesByUniversityId(int universityId, string sortOrder)
         {
-            var courses = _repository.GetCoursesByUniversityId(universityId, sortOrder).ToList();
+            var courses = _repository.GetCoursesByUniversityId(universityId).ToList();
 
             switch (sortOrder)
             {
@@ -28,7 +27,7 @@ namespace MVCApp.Business
 
         public IEnumerable<Student> GetStudentsByCourseId(int id, string sortOrder)
         {
-            var students = _repository.GetStudentsByCourseId(id, sortOrder).ToList();
+            var students = _repository.GetStudentsByCourseId(id).ToList();
 
             switch (sortOrder)
             {
@@ -45,7 +44,7 @@ namespace MVCApp.Business
 
         public IEnumerable<University> GetUniversities(string sortOrder)
         {
-            var universities = _repository.GetUniversities(sortOrder).ToList();
+            var universities = _repository.GetUniversities().ToList();
 
             switch (sortOrder)
             {
